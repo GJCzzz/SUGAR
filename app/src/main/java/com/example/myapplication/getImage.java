@@ -35,16 +35,16 @@ public class getImage {
         int maximumY = img.rows();
         int maximumX = img.cols();
 
-//        for (List<Point> box : freeList) {
-//            Mat transformedImg = fourPointTransform(img, box);
-//            double ratio = calculateRatio(transformedImg.cols(), transformedImg.rows());
-//            int newWidth = (int) (modelHeight * ratio);
-//            if (newWidth > 0) {
-//                Mat cropImg = computeRatioAndResize(transformedImg, transformedImg.cols(), transformedImg.rows(), modelHeight);
-//                imageList.add(new BoxImagePair(box, cropImg));
-//                maxRatioFree = Math.max(ratio, maxRatioFree);
-//            }
-//        }
+        for (List<Point> box : freeList) {
+            Mat transformedImg = fourPointTransform(img, box);
+            double ratio = calculateRatio(transformedImg.cols(), transformedImg.rows());
+            int newWidth = (int) (modelHeight * ratio);
+            if (newWidth > 0) {
+                Mat cropImg = computeRatioAndResize(transformedImg, transformedImg.cols(), transformedImg.rows(), modelHeight);
+                imageList.add(new BoxImagePair(box, cropImg));
+                maxRatioFree = Math.max(ratio, maxRatioFree);
+            }
+        }
 
         maxRatioFree = Math.ceil(maxRatioFree);
 
